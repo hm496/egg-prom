@@ -1,6 +1,6 @@
 {
-  "name": "egg-prometheus",
-  "version": "1.3.0",
+  "name": "egg-prom",
+  "version": "1.0.0",
   "description": "Prometheus plugin for Egg.js",
   "main": "app.js",
   "eggPlugin": {
@@ -27,19 +27,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-prometheus.git"
+    "url": "git+https://github.com/hm496/egg-prom.git"
   },
   "keywords": [
     "egg",
     "prometheus",
     "metrics"
   ],
-  "author": "gxcsoccer <gxcsoccer@126.com>",
+  "author": "hm496 <hm496@163.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/hm496/egg-prom/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-prometheus#readme",
+  "homepage": "https://github.com/hm496/egg-prom#readme",
   "engines": {
     "node": ">=8.0.0"
   },

@@ -1,5 +1,7 @@
-# egg-prometheus
-Prometheus plugin for egg framework
+forked from eggjs/egg-prometheus 1.3.0   
+为支持随机端口,修改生命周期和获取配置相关逻辑   
+
+# egg-prom
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]

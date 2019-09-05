@@ -2,12 +2,22 @@
 
 const PrometheusServer = require('./lib/server');
 
-module.exports = agent => {
-  const server = new PrometheusServer(agent);
-  agent.beforeStart(async () => {
-    await server.ready();
-  });
-  agent.beforeClose(async () => {
-    await server.close();
-  });
-};
+class AppBootHook {
+  constructor (agent) {
+    this.agent = agent;
+    this.agent.messenger.on('egg_prometheus_config_action_to_agent', () => {
+      this.agent.messenger.sendToApp('egg_prometheus_config_action_to_app', this.agent.config.prometheus);
+    });
+  }
+
+  async willReady () {
+    this.server = new PrometheusServer(this.agent);
+    await this.server.ready();
+  }
+
+  async beforeClose () {
+    await this.server.close();
+  }
+}
+
+module.exports = AppBootHook;
