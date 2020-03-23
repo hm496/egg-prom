@@ -5,8 +5,8 @@ const PrometheusServer = require('./lib/server');
 class AppBootHook {
   constructor (agent) {
     this.agent = agent;
-    this.agent.messenger.on('egg_prometheus_config_action_to_agent', () => {
-      this.agent.messenger.sendToApp('egg_prometheus_config_action_to_app', this.agent.config.prometheus);
+    this.agent.messenger.on('prometheus:Config', () => {
+      this.agent.messenger.sendToApp('prometheus:Config', this.agent.config.prometheus);
     });
   }
 

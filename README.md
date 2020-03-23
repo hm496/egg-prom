@@ -1,4 +1,4 @@
-forked from eggjs/egg-prometheus 1.3.0   
+forked from eggjs/egg-prometheus 1.4.0   
 为支持随机端口,修改生命周期和获取配置相关逻辑   
 
 # egg-prom
