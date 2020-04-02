@@ -14,10 +14,17 @@ class AppBootHook {
       httpServerMetrics(app);
     }
 
-    this.app.messenger.once('prometheus:Config', (config) => {
+    let lastScrapePort, lastAggregatorPort;
+    this.app.messenger.on('prometheus:Config', (config) => {
       this.app.config.prometheus = Object.assign({}, this.app.config.prometheus, config);
+      const configProm = this.app.config.prometheus;
+      if (configProm.scrapePort === lastScrapePort && configProm.aggregatorPort === lastAggregatorPort) {
+        return;
+      }
+      this.worker && this.worker.close();
       this.worker = new PrometheusWorker(this.app);
-      this.worker.ready();
+      lastScrapePort = configProm.scrapePort;
+      lastAggregatorPort = configProm.aggregatorPort;
     });
 
     this.app.messenger.once('egg-ready', () => {
